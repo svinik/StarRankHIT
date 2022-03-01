@@ -22,7 +22,7 @@ function endFeedback() {
         feedbackEndTime = getTimeStampIL(new Date());
         $.ajax({
             type: "POST",
-            url: "/Feedback/FeedbackData",
+            url: "/star-rank-exp/Feedback/FeedbackData",
             data: {
                 feedbackStartTime: feedbackStartTime,
                 feedbackEndTime: feedbackEndTime,
@@ -38,7 +38,7 @@ function endFeedback() {
                 document.getElementById('submit_id').style.display = "block";
             },
             error: function (jqXHR, exception) {
-                window.location.replace("/Home/Error?lastScreen=feedback");
+                window.location.replace("/star-rank-exp/Home/Error?lastScreen=feedback");
             }
         });
     }
