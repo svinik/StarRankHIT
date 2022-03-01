@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace StarRankHIT.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public async Task<ActionResult> Index()
