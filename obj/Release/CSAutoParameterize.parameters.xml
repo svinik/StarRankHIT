@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="connectionString-Web.config Connection String" description="connectionString Connection String used in web.config by the application to access the database." defaultValue="mongodb+srv://star:Qwerty123456@starrankcluster.eotzt.mongodb.net/starrankdb?retryWrites=true&amp;w=majority" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\roy-s\\source\\repos\\StarRankHIT\\StarRankHIT\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='connectionString']/@connectionString" />
+  </parameter>
+</parameters>

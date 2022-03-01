@@ -1,0 +1,55 @@
+﻿@foreach (var item in Model)
+{
+    <div data-pair="@Json.Encode(item)"></div>
+    <div data-id="@Json.Encode(item._id.ToString())"></div>
+}
+<script type="text/javascript" src="~/Scripts/DevScripts/timeLogger.js"></script>
+<script type="text/javascript" src="~/lib/Chart.js/chart.min.js"></script>
+<script type="text/javascript" src="~/lib/chartjs-plugin-datalabels/chartjs-plugin-datalabels.min.js"></script>
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script type="text/javascript" src="~/Scripts/DevScripts/evaluation.js"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Evaluation</title>
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css">
+</head>
+<body id="page-top" onload="startEvaluationPage()">
+    <header class="masthead bg-primary text-black">
+        <div class="container-xl">
+            <h1>Evaluation Task<br></h1>
+            <hr class="star-light">
+            <h2 class="text-left font-weight-light mb-0">
+                You are interested in buying a PHONE and just found two models that fully comply with your requirements (and cost exactly the same).
+            </h2>
+            <br>
+            <center>
+                <div class="options-container">
+                    <div class="option-container">
+                        <canvas class="rank_chart" id="myChart1"></canvas>
+                        <button class="button choose-button" onclick="optionSelected('a'); return false;">This is my choice</button>
+                    </div>
+                    <div class="option-container">
+                        <canvas class="rank_chart" id="myChart2"></canvas>
+                        <button class="button choose-button" onclick="optionSelected('b'); return false;">This is my choice</button>
+                    </div>
+                </div>
+            </center>
+            <br><br>
+        </div>
+    </header>
+</body>
+</html>

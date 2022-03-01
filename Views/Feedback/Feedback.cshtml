@@ -1,0 +1,72 @@
+﻿<script type="text/javascript" src="~/Scripts/DevScripts/feedback.js"></script>
+<script type="text/javascript" src="~/Scripts/DevScripts/timeLogger.js"></script>
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Evaluation</title>
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css">
+</head>
+<body id="page-top" onload="startFeedbackPage()">
+    <header class="masthead bg-primary text-black">
+        <div class="container-xl" id="feedback_id">
+            <h1>Thank You for Your Effort!<br></h1>
+            <hr class="star-light">
+            <h2 class="text-left font-weight-light mb-0">
+                <center>
+                    What were your considerations when choosing between the two products?
+                    <br>
+                    <textarea id="reasoning_id" rows="2" cols="50"></textarea>
+                    <br><br>
+                    How did the rating distributions affect your choice?
+                    <br>
+                    <textarea id="affect_id" rows="2" cols="50"></textarea>
+                    <br><br>
+                    Are the rating distributions important for choosing or could you settle for average ratings
+                    <br>
+                    <textarea id="importance_id" rows="2" cols="50"></textarea>
+                    <br><br>
+                    What other information can be useful when choosing between the two products?
+                    <br>
+                    <textarea id="other_info_id" rows="2" cols="50"></textarea>
+                    <br><br>
+                    Did you encounter any technical issues during the HIT?
+                    <br>
+                    <textarea id="issues_id" rows="2" cols="50"></textarea>
+                    <br><br>
+                    <div style="text-align:center;">
+                        <button class="button" id="end_feedback_button_id" onclick="endFeedback(); return false;">Next</button>
+                    </div>
+                </center>
+            </h2>
+        </div>
+
+        <div class="container-xl" id="submit_id" style="display:none;">
+            <h2 class="text-left font-weight-light mb-0">
+                <h1>We Are Done<br></h1>
+                <hr class="star-light">
+                <h2 class="text-left font-weight-light mb-0">
+                    <center>
+                        Thanks for your participation!
+
+                        <br><br>
+
+                            <div style="text-align:center;">
+                                <input type="submit" class="button" id="submit_button_id" value="Redirect" onclick="redirectToProlific()" />
+                            </div>
+                    </center>
+                </h2>
+            </h2>
+        </div>
+    </header>
+</body>
+</html>

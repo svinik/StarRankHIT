@@ -1,0 +1,53 @@
+﻿<script type="text/javascript" src="~/Scripts/DevScripts/consent.js"></script>
+<script type="text/javascript" src="~/Scripts/DevScripts/timeLogger.js"></script>
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css">
+</head>
+
+<body id="page-top" onload="startConsentPage();">
+    <header class="masthead bg-primary text-black">
+        <div class="container-xl">
+            <h1>Informed Consent<br></h1>
+            <hr class="star-light">
+            <h3>Dear participant,</h3>
+            <p>This study is being carried out by students from the lab of Prof. David Sarne at Bar-Ilan University. The objective of this study is to learn user preference. You may not directly benefit from the results of this study. However, we hope that your participation in the study will help to understand better some aspects of human decision-making, leading to the development of more effective tools and methods for product evaluation.</p>
+            <p>We believe there is no risk associated with this study. As with any online related activity, there may be a risk of a breach of confidentiality. To the best of our ability, your answers in this study will remain confidential. We minimize risks by storing all the data in a secured server. All the results will be reported based on the data collected from all users – no specific data of any single user will be disclosed whatsoever (anonymous).</p>
+            <p>Your participation in this study is voluntary, and you can withdraw at any time. There will be no penalty for withdrawal (though you will not complete the HIT and get paid).</p>
+            <p>We sincerely appreciate your participation in this study.</p>
+            <p>If you encounter any technical problem with the HIT or have any questions or comments, please contact us by sending an email using the AMT system. If you want clarification regarding this research or your participation, please contact Moshe Hanukoglu at moshe.hanu@gmail.com.</p>
+            <p>By clicking the “I agree” button, you confirm that you are at least 18 years old, have read and understood this consent form, and agree to participate in this research. It is advised that you print a copy of this page for your records.</p>
+            <div class="alert alert-info" width="60%">
+                <b>
+                    Please note that you can participate in this experiment only once.
+                    <br />
+                    Thus, once you click the "I Agree" button, you will not be able to start the experiment again or open it in another window/tab.
+                    <br />
+                    Also, to avoid potential problems, please do NOT click the refresh button nor the back button while participating in this experiment.
+                </b>
+            </div>
+            <br />
+
+            <button id="agree_button_id" type="submit" class="button_consent" style="background-color:#4ef18f" onclick="EndConsent(true);">I Agree</button>
+            <button id="not_agree_button_id" type="submit" class="button_consent" style="background-color:#f14e4e" onclick="EndConsent(false);">I do not agree</button>
+
+        </div>
+    </header>
+</body>
+
+</html>

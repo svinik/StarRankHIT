@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "SummaryTable";
+}
+<h2>@ViewBag.Title.</h2>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Evaluation</title>
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css">
+</head>
+
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>PROLIFIC PID</th>
+        <th>Index</th>
+        <th>T</th>
+        <th>F</th>
+        <th>Rating</th>
+        <th>Changes</th>
+        <th>Rating History</th>
+        <th>Ratio Real</th>
+        <th>Ratio Group</th>
+        <th>Min</th>
+        <th>Max</th>
+        <th>Sum</th>
+        <th>Diff</th>
+    </tr>
+
+    @foreach (var cl in Model)
+    {
+<tr>
+    <td>@cl.PROLOFIC_PID</td>
+    <td>@cl.index</td>
+    <td>@cl.T</td>
+    <td>@cl.F</td>
+
+    <td>@cl.final_rating</td>
+    <td>@cl.changes</td>
+    <td>@cl.history_rating</td>
+    <td>@cl.ratio_real</td>
+    <td>@cl.ratio_group</td>
+    <td>@cl.min</td>
+    <td>@cl.max</td>
+    <td>@cl.sum</td>
+    <td>@cl.diff</td>
+
+</tr>
+    }
+</table>
+
+<!---
+    <h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p> >
+
+-->

@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "SummaryTable";
+}
+<h2>@ViewBag.Title.</h2>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Evaluation</title>
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css">
+</head>
+
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>PROLIFIC PID</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Country</th>
+
+        <th>Mistakes Captcha</th>
+        <th>Mistakes Quiz</th>
+        <th>Q-Unclear</th>
+        <th>Q-Reasoning</th>
+        <th>Q-Bugs</th>
+
+        <th>Soft Inconsistency (#)</th>
+        <th>Soft Inconsistency Str</th>
+        <th>Big Inconsistency (#)</th>
+        <th>Big Inconsistency Str</th>
+
+        <th>Q-Comments</th>
+
+        <th>Total Time</th>
+        <th>Consent Time</th>
+        <th>Demographics Time</th>
+        <th>Instructions Time</th>
+        <th>Example Time</th>
+        <th>Quiz Time</th>
+        <th>Evaluations Time</th>
+        <th>Feedback Time</th>
+
+        <th>IP</th>
+        <th>Browser</th>
+
+        <th>Start Time IL</th>
+
+    </tr>
+
+    @foreach (var cl in Model)
+    {
+<tr>
+    <td>@cl.PROLOFIC_PID</td>
+    <td>@cl.gender</td>
+    <td>@cl.age</td>
+    <td>@cl.country</td>
+    <td>@cl.mistakes_captcha_page</td>
+    <td>@cl.mistakes_quiz_page</td>
+    <td>@cl.unclear</td>
+    <td>@cl.reasoning</td>
+    <td>@cl.bugs</td>
+
+    <td>@cl.soft_inconsistency_num</td>
+    <td>@cl.soft_inconsistency_str</td>
+    <td>@cl.big_inconsistency_num</td>
+    <td>@cl.big_inconsistency_str</td>
+
+    <td>@cl.comments</td>
+    <td>@cl.total_time</td>
+    <td>@cl.consent_time</td>
+    <td>@cl.personal_details_time</td>
+    <td>@cl.instructions_time</td>
+    <td>@cl.example_time</td>
+    <td>@cl.quiz_time</td>
+    <td>@cl.evaluations_time</td>
+    <td>@cl.feedback_time</td>
+    <td>@cl.IP</td>
+    <td>@cl.browser</td>
+    <td>@cl.start_time</td>
+
+</tr>
+    }
+</table>
+
+<!---
+    <h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p> >
+
+-->
