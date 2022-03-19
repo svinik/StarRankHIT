@@ -28,7 +28,7 @@
     --white: #fff;
     --gray: #868e96;
     --gray-dark: #343a40;
-    --primary: #fee2cc;
+    --primary: white;
     --secondary: #2c3e50;
     --success: #28a745;
     --info: #17a2b8;
@@ -79,7 +79,7 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fee2cc !important
+    background-color: white !important
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -2843,8 +2843,8 @@ fieldset:disabled a.btn {
     .btn-primary.disabled,
     .btn-primary:disabled {
         color: #fff;
-        background-color: #fee2cc;
-        border-color: #fee2cc
+        background-color: white;
+        border-color: white
     }
 
     .btn-primary:not(:disabled):not(.disabled).active,
@@ -3140,14 +3140,14 @@ fieldset:disabled a.btn {
         }
 
 .btn-outline-primary {
-    color: #fee2cc;
-    border-color: #fee2cc
+    color: white;
+    border-color: white
 }
 
     .btn-outline-primary:hover {
         color: #fff;
-        background-color: #fee2cc;
-        border-color: #fee2cc
+        background-color: white;
+        border-color: white
     }
 
     .btn-outline-primary.focus,
@@ -3157,7 +3157,7 @@ fieldset:disabled a.btn {
 
     .btn-outline-primary.disabled,
     .btn-outline-primary:disabled {
-        color: #fee2cc;
+        color: white;
         background-color: transparent
     }
 
@@ -3165,8 +3165,8 @@ fieldset:disabled a.btn {
     .btn-outline-primary:not(:disabled):not(.disabled):active,
     .show > .btn-outline-primary.dropdown-toggle {
         color: #fff;
-        background-color: #fee2cc;
-        border-color: #fee2cc
+        background-color: white;
+        border-color: white
     }
 
         .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -3429,7 +3429,7 @@ fieldset:disabled a.btn {
 
 .btn-link {
     font-weight: 400;
-    color: #fee2cc;
+    color: white;
     text-decoration: none
 }
 
@@ -3737,7 +3737,7 @@ input[type=submit].btn-block {
     .dropdown-item:active {
         color: #fff;
         text-decoration: none;
-        background-color: #fee2cc
+        background-color: white
     }
 
     .dropdown-item.disabled,
@@ -4116,8 +4116,8 @@ input[type=submit].btn-block {
 
     .custom-control-input:checked ~ .custom-control-label:before {
         color: #fff;
-        border-color: #fee2cc;
-        background-color: #fee2cc
+        border-color: white;
+        background-color: white
     }
 
     .custom-control-input:focus ~ .custom-control-label:before {
@@ -4180,8 +4180,8 @@ input[type=submit].btn-block {
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label:before {
-    border-color: #fee2cc;
-    background-color: #fee2cc
+    border-color: white;
+    background-color: white
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label:after {
@@ -4414,7 +4414,7 @@ input[type=submit].btn-block {
         width: 1rem;
         height: 1rem;
         margin-top: -.25rem;
-        background-color: #fee2cc;
+        background-color: white;
         border: 0;
         border-radius: 1rem;
         transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -4445,7 +4445,7 @@ input[type=submit].btn-block {
 .custom-range::-moz-range-thumb {
     width: 1rem;
     height: 1rem;
-    background-color: #fee2cc;
+    background-color: white;
     border: 0;
     border-radius: 1rem;
     transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -4479,7 +4479,7 @@ input[type=submit].btn-block {
     margin-top: 0;
     margin-right: .2rem;
     margin-left: .2rem;
-    background-color: #fee2cc;
+    background-color: white;
     border: 0;
     border-radius: 1rem;
     transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -4621,7 +4621,7 @@ input[type=submit].btn-block {
     .nav-pills .nav-link.active,
     .nav-pills .show > .nav-link {
         color: #fff;
-        background-color: #fee2cc
+        background-color: white
     }
 
 .nav-fill .nav-item,
@@ -5423,7 +5423,7 @@ input[type=submit].btn-block {
     padding: .5rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #fee2cc;
+    color: white;
     background-color: #fff;
     border: 1px solid #dee2e6
 }
@@ -5456,8 +5456,8 @@ input[type=submit].btn-block {
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #fee2cc;
-    border-color: #fee2cc
+    background-color: white;
+    border-color: white
 }
 
 .page-item.disabled .page-link {
@@ -5541,7 +5541,7 @@ a.badge:hover {
 
 .badge-primary {
     color: #fff;
-    background-color: #fee2cc
+    background-color: white
 }
 
 a.badge-primary:focus,
@@ -5878,7 +5878,7 @@ a.badge-dark:focus {
     color: #fff;
     text-align: center;
     white-space: nowrap;
-    background-color: #fee2cc;
+    background-color: white;
     transition: width .6s ease
 }
 
@@ -5974,8 +5974,8 @@ a.badge-dark:focus {
     .list-group-item.active {
         z-index: 2;
         color: #fff;
-        background-color: #fee2cc;
-        border-color: #fee2cc
+        background-color: white;
+        border-color: white
     }
 
     .list-group-item + .list-group-item {
@@ -7339,7 +7339,7 @@ button.bg-dark:hover {
 }
 
 .border-primary {
-    border-color: #fee2cc !important
+    border-color: white !important
 }
 
 .border-secondary {
@@ -11371,7 +11371,7 @@ hr.star-light {
 
     hr.star-light:after {
         color: #ea7a7a;
-        background-color: #fee2cc
+        background-color: white
     }
 
 hr.star-dark {
@@ -11446,7 +11446,7 @@ section {
         }
 
             #mainNav .navbar-nav li.nav-item a.nav-link:hover {
-                color: #fee2cc
+                color: white
             }
 
             #mainNav .navbar-nav li.nav-item a.nav-link:active,
@@ -11455,7 +11455,7 @@ section {
             }
 
             #mainNav .navbar-nav li.nav-item a.nav-link.active {
-                color: #fee2cc
+                color: white
             }
 
     #mainNav .navbar-toggler {
@@ -11484,7 +11484,7 @@ section {
             #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus,
             #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
                 color: #fff;
-                background: #fee2cc
+                background: white
             }
 
         #mainNav.navbar-shrink {
@@ -11607,7 +11607,7 @@ header.masthead {
 }
 
 .close {
-    color: #fee2cc;
+    color: white;
     font-size: 3rem;
     opacity: 1
 }
@@ -11666,7 +11666,7 @@ header.masthead {
 }
 
 .floating-label-form-group-with-focus label {
-    color: #fee2cc
+    color: white
 }
 
 form .row:first-child .floating-label-form-group {
@@ -11689,7 +11689,7 @@ form .row:first-child .floating-label-form-group {
 }
 
 a {
-    color: #fee2cc
+    color: white
 }
 
     a:active,
@@ -11703,7 +11703,7 @@ a {
 }
 
 .bg-primary {
-    background-color: #fee2cc !important
+    background-color: white !important
 }
 
 .bg-secondary {
@@ -11711,7 +11711,7 @@ a {
 }
 
 .text-primary {
-    color: #fee2cc !important
+    color: white !important
 }
 
 .text-secondary {
@@ -11719,8 +11719,8 @@ a {
 }
 
 .btn-primary {
-    background-color: #fee2cc;
-    border-color: #fee2cc
+    background-color: white;
+    border-color: white
 }
 
     .btn-primary:active,
@@ -11864,7 +11864,7 @@ label_green {
     flex-direction: column;
     align-items: center;
     height: 250px;
-    width: 350px;
+    width: 400px;
 }
 
 .rank_chart {

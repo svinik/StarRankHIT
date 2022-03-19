@@ -54,7 +54,9 @@ function endPersonalDetails() {
     cap = document.getElementById('cap_id').value;
     seconds = document.getElementById('seconds_id').value;
 
-    if (age != "" && gender != "" && country != "" && (cap == "chen" || cap == "AHi5b#L8") && seconds == "90") {
+    parsedAge = parseInt(age)
+
+    if (parsedAge != NaN && parsedAge >= 18 && parsedAge <= 120 && gender != "" && country != "" && (cap == "chen" || cap == "AHi5b#L8") && seconds == "90") {
         concatValues();
         pageEndTime = getTimeStampIL(new Date());
 

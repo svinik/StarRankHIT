@@ -12,7 +12,7 @@ function endFeedback() {
     var otherInfo = document.getElementById("other_info_id").value;
     var issues = document.getElementById("issues_id").value;
 
-    if (reasoning == "" || affect == "" || importance == "" || otherInfo == "" || issues == "") {
+    if (reasoning.trim().length == 0 || affect.trim().length == 0 || importance.trim().length == 0 || otherInfo.trim().length == 0 || issues.trim().length == 0) {
         warnings++;
         swal("Please answer the questions to continue", "", "warning", {
             button: "OK",

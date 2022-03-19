@@ -1,5 +1,6 @@
 ﻿// Register the plugin to all charts:
 Chart.register(ChartDataLabels);
+Chart.defaults.font.family = "'FontAwesome', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'";
 
 var decisions = [];
 var finalDecisions = [];
@@ -39,7 +40,7 @@ for (var pair of pairs) {
 
 }
 
-var dataLabels = ['5 star', '4 star', '3 star', '2 star', '1 star'];
+var dataLabels = ['\uf005\uf005\uf005\uf005\uf005', '\uf005\uf005\uf005\uf005', '\uf005\uf005\uf005', '\uf005\uf005', '\uf005'];
 var ctx1;
 var myChart1;
 var ctx2;
