@@ -14,8 +14,20 @@ var ctx2;
 var dataValues2 = [67, 18, 3, 4, 8];
 var myChart2;
 
+function resetButtons() {
+    var buttonA = document.getElementsByClassName('choose-button')[0];
+    var buttonB = document.getElementsByClassName('choose-button')[1];
+    buttonA.disabled = true;
+    buttonB.disabled = true;
+    setTimeout(() => {
+        buttonA.disabled = false;
+        buttonB.disabled = false;
+    }, 4000)
+}
+
 function startInstructionsPage() {
     instructionsStartTime = getTimeStampIL(new Date());
+    resetButtons();
     ctx1 = document.getElementById("myChart1").getContext('2d');
     myChart1 = new Chart(ctx1, {
         type: 'bar',

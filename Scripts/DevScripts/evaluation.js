@@ -10,6 +10,8 @@ var warnings = 0;
 var startDate;
 var current = 0;
 var pairs = [];
+
+
 $('[data-pair]').each(function () {
     var pairData = $(this).data('pair');
     pairs.push(pairData);
@@ -45,6 +47,17 @@ var ctx1;
 var myChart1;
 var ctx2;
 var myChart2;
+
+function resetButtons() {
+    var buttonA = document.getElementsByClassName('choose-button')[0];
+    var buttonB = document.getElementsByClassName('choose-button')[1];
+    buttonA.disabled = true;
+    buttonB.disabled = true;
+    setTimeout(() => {
+        buttonA.disabled = false;
+        buttonB.disabled = false;
+    }, 4000)
+}
 
 function SetPair(pair) {
     ctx1 = document.getElementById("myChart1").getContext('2d');
@@ -158,6 +171,7 @@ function startEvaluationPage() {
     evaluationStartTime = getTimeStampIL(new Date());
 
     SetPair(pairs[current]);
+    resetButtons();
 
     for (var index1 = 0; index1 < pairs.length; index1++) {
         finalDecisions.push({
@@ -249,15 +263,25 @@ function optionSelected(option) {
         finalDecisions[index].changes = finalDecisions[index].changes + 1;
     }
 
+
     next();
 }
 
+function advanceProgressBar() {
+    var total = pairs.length; //set this on initial page load
+    var pcg = Math.floor(current / total * 100);
+    document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', pcg);
+    document.getElementsByClassName('progress-bar').item(0).setAttribute('style', 'width:' + Number(pcg) + '%');
+}
+
 function next() {
-    if (current < pairs.length - 1) {
-        current++;
+    current++;
+    advanceProgressBar();
+    if (current < pairs.length) {
         myChart1.destroy();
         myChart2.destroy();
         SetPair(pairs[current]);
+        resetButtons();
     } else {
         endEvaluation();
     }
