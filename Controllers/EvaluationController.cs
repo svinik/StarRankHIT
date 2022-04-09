@@ -21,6 +21,7 @@ namespace StarRankHIT.Controllers
             DistributionPair[] info = fetchInfo();
 
             // WRITE DETAILS TO DB.
+            /*
             var Client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["connectionString"].ToString());
             var DB = Client.GetDatabase(System.Configuration.ConfigurationManager.AppSettings["dbName"].ToString());
             var collectionResults = DB.GetCollection<BsonDocument>("results");
@@ -28,6 +29,7 @@ namespace StarRankHIT.Controllers
             var filter = Builders<BsonDocument>.Filter.Eq("PROLIFIC_PID", Session["PROLIFIC_PID"].ToString());
             var update = Builders<BsonDocument>.Update.Set("decisions_info_server", info);
             await collectionResults.UpdateOneAsync(filter, update);
+            */
 
             Session["evaluation_time_server"] = Constants.getTimeStamp();
             return View(info);
@@ -71,7 +73,7 @@ namespace StarRankHIT.Controllers
 
         }
 
-        public async Task EvaluationData(string startDate, string evaluationStartTime, string evaluationEndTime, string decisions, string finalDecisions, string decisionsStr, int warnings)
+        public async Task EvaluationData(string startDate, string evaluationStartTime, string evaluationEndTime, string decisions, /*string finalDecisions,*/ string decisionsStr, int warnings)
         {
             try
             {
@@ -97,14 +99,14 @@ namespace StarRankHIT.Controllers
                 var jsonReaderDecisions = new JsonReader(decisions);
                 var bsonArrayDecisions = serializer.Deserialize(BsonDeserializationContext.CreateRoot(jsonReaderDecisions));
 
-                var jsonReaderFinalDecisions = new JsonReader(finalDecisions);
-                var bsonArrayFinalDecisions = serializer.Deserialize(BsonDeserializationContext.CreateRoot(jsonReaderFinalDecisions));
+                //var jsonReaderFinalDecisions = new JsonReader(finalDecisions);
+                //var bsonArrayFinalDecisions = serializer.Deserialize(BsonDeserializationContext.CreateRoot(jsonReaderFinalDecisions));
 
 
                 var evaluation_page = new BsonDocument
                 {
                     {"times", times},
-                    {"final_decisions_arr", bsonArrayFinalDecisions},
+                    //{"final_decisions_arr", bsonArrayFinalDecisions},
                     {"decisions_arr", bsonArrayDecisions},
                     {"decisions_arr_str", decisionsStr},
                     {"warnings", warnings}

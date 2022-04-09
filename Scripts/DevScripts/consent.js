@@ -13,7 +13,7 @@ function EndConsent(hasAgreed) {
 
     $.ajax({
         type: "POST",
-        url: "/star-rank-exp/Home/ConsentData/",
+        url: "/Home/ConsentData/",
         data: {
             pageStartTimeClient: pageStartTime,
 
@@ -22,14 +22,14 @@ function EndConsent(hasAgreed) {
         },
         success: function () {
             if (hasAgreed) {
-                window.location.replace("/star-rank-exp/PersonalDetails/Index");
+                window.location.replace("/PersonalDetails/Index");
             }
             else { // disagree - thank you for your time page.
-                window.location.replace("/star-rank-exp/Home/Disagree");
+                window.location.replace("/Home/Disagree");
             }
         },
         error: function (jqXHR, exception) {
-            window.location.replace("/star-rank-exp/Home/Error?lastScreen=consent");
+            window.location.replace("/Home/Error?lastScreen=consent");
         }
     });
 }

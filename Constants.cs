@@ -13,7 +13,7 @@ namespace StarRankHIT
 
         public static String MTURK_ASSIGNMENT_NOT_AVAILABLE = "ASSIGNMENT_ID_NOT_AVAILABLE";
 
-        public static String APK_VER = "1.2";
+        public static String APK_VER = "1.0.0";
 
         public static String GAME_VARIANT = "StarRankHIT";
 

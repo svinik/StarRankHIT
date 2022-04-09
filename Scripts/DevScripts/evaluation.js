@@ -3,7 +3,7 @@ Chart.register(ChartDataLabels);
 Chart.defaults.font.family = "'FontAwesome', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'";
 
 var decisions = [];
-var finalDecisions = [];
+//var finalDecisions = [];
 var decisionsStr = "";
 var evaluationStartTime;
 var warnings = 0;
@@ -20,7 +20,7 @@ $('[data-pair]').each(function () {
 var i = 0;
 $('[data-id]').each(function () {
     var idData = $(this).data('id');
-    pairs[i]._id = idData
+    pairs[i]._id = idData.slice(1, -1);
     i++;
 });
 
@@ -56,7 +56,7 @@ function resetButtons() {
     setTimeout(() => {
         buttonA.disabled = false;
         buttonB.disabled = false;
-    }, 4000)
+    }, 0)
 }
 
 function SetPair(pair) {
@@ -173,7 +173,7 @@ function startEvaluationPage() {
     SetPair(pairs[current]);
     resetButtons();
 
-    for (var index1 = 0; index1 < pairs.length; index1++) {
+    /*for (var index1 = 0; index1 < pairs.length; index1++) {
         finalDecisions.push({
             "index": index1,
             "option": null,
@@ -181,7 +181,7 @@ function startEvaluationPage() {
             "history": "",
             "changes": -1
         });
-    }
+    }*/
 }
 
 function endEvaluation() {
@@ -194,21 +194,21 @@ function endEvaluation() {
     }, function () {
         $.ajax({
             type: "POST",
-            url: "/star-rank-exp/Evaluation/EvaluationData",
+            url: "/Evaluation/EvaluationData",
             data: {
                 startDate: startDate,
                 evaluationStartTime: evaluationStartTime,
                 evaluationEndTime: evaluationEndTime,
                 decisions: JSON.stringify(decisions),
-                finalDecisions: JSON.stringify(finalDecisions),
+                //finalDecisions: JSON.stringify(finalDecisions),
                 decisionsStr: decisionsStr,
                 warnings: warnings
             },
             success: function () {
-                window.location.replace("/star-rank-exp/Feedback/Index"); //to prevent page back
+                window.location.replace("/Feedback/Index"); //to prevent page back
             },
             error: function (jqXHR, exception) {
-                window.location.replace("/star-rank-exp/Home/Error?lastScreen=evaluation");
+                window.location.replace("/Home/Error?lastScreen=evaluation");
             }
         });
     });
@@ -216,7 +216,7 @@ function endEvaluation() {
 }
 
 function checkDone() {
-    for (var decision of finalDecisions)
+    for (var decision of decisions)
         if (decision.option == null)
             return false;
     return true;
@@ -229,7 +229,7 @@ function optionSelected(option) {
     var id = pairs[current]._id;
 
     var decision = {
-        index: index,
+        index: index.toString(),
         option: option,
         timestamp: time,
         date: d,
@@ -245,7 +245,7 @@ function optionSelected(option) {
         decisionsStr += "#" + decisionStr;
     }
     // update the relevant element in rating array.
-    if (finalDecisions[index].index != index) {
+    /*if (finalDecisions[index].index != index) {
         alert("indexing error");
         return;
     }
@@ -261,7 +261,7 @@ function optionSelected(option) {
         }
 
         finalDecisions[index].changes = finalDecisions[index].changes + 1;
-    }
+    }*/
 
 
     next();

@@ -11886,3 +11886,7 @@ button.option-button {
 .alert-info {
     text-align: left;
 }
+
+.progress {
+    margin-top: auto;
+}

@@ -62,7 +62,7 @@ function endPersonalDetails() {
 
         $.ajax({
             type: "POST",
-            url: "/star-rank-exp/PersonalDetails/PersonalDetailsData",
+            url: "/PersonalDetails/PersonalDetailsData",
             data: {
                 pageStartTimeClient: pageStartTime,
                 clickTimeClient: pageEndTime,
@@ -82,10 +82,10 @@ function endPersonalDetails() {
                 mistakes: mistakes,
             },
             success: function () {
-                window.location.replace("/star-rank-exp/Instructions/Index");
+                window.location.replace("/Instructions/Index");
             },
             error: function (jqXHR, exception) {
-                window.location.replace("/star-rank-exp/Home/Error?lastScreen=consent");
+                window.location.replace("/Home/Error?lastScreen=consent");
             }
         });
     }
