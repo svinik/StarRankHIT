@@ -144,17 +144,17 @@ function endQuiz(option) {
     }, function () {
         $.ajax({
             type: "POST",
-            url: "/Instructions/InstructionsData",
+            url: "/star-rank-exp/Instructions/InstructionsData",
             data: {
                 instructionsStartTime: instructionsStartTime,
                 pageEndTime: pageEndTime,
                 selectedOption: option
             },
             success: function () {
-                window.location.replace("/Evaluation/Evaluation"); //to prevent page back
+                window.location.replace("/star-rank-exp/Evaluation/Evaluation"); //to prevent page back
             },
             error: function (jqXHR, exception) {
-                window.location.replace("/Home/Error?lastScreen=welcome");
+                window.location.replace("/star-rank-exp/Home/Error?lastScreen=welcome");
             }
         });
     });
