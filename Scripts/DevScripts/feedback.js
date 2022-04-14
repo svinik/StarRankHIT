@@ -33,9 +33,8 @@ function endFeedback() {
                 issues: issues,
                 warnings: warnings
             },
-            success: function () {
-                document.getElementById('feedback_id').style.display = "none";
-                document.getElementById('submit_id').style.display = "block";
+            success: function (response) {
+                window.location.replace(response);
             },
             error: function (jqXHR, exception) {
                 window.location.replace("/star-rank-exp/Home/Error?lastScreen=feedback");

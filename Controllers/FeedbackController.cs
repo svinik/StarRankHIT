@@ -65,17 +65,11 @@ namespace StarRankHIT.Controllers
             }
         }
 
-        public async Task SubmitToMturk()
+        public async Task<String> SubmitToMturk()
         {
-            var values = new Dictionary<string, string>
-              {
-                  { "assignmentId", Session["assignmentId"].ToString() }
-              };
-
-            var content = new FormUrlEncodedContent(values);
             String mturkUrl = System.Configuration.ConfigurationManager.AppSettings["mturkUrl"].ToString();
 
-            await client.PostAsync(mturkUrl, content);
+            return mturkUrl + "?assignmentId=" + Session["assignmentId"].ToString();
         }
     }
 }
