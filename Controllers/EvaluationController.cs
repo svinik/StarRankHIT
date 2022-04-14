@@ -26,7 +26,7 @@ namespace StarRankHIT.Controllers
             var DB = Client.GetDatabase(System.Configuration.ConfigurationManager.AppSettings["dbName"].ToString());
             var collectionResults = DB.GetCollection<BsonDocument>("results");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("PROLIFIC_PID", Session["PROLIFIC_PID"].ToString());
+            var filter = Builders<BsonDocument>.Filter.Eq("workerId", Session["workerId"].ToString());
             var update = Builders<BsonDocument>.Update.Set("decisions_info_server", info);
             await collectionResults.UpdateOneAsync(filter, update);
             */
@@ -112,25 +112,25 @@ namespace StarRankHIT.Controllers
                     {"warnings", warnings}
                 };
 
-                var filter = Builders<BsonDocument>.Filter.Eq("PROLIFIC_PID", Session["PROLIFIC_PID"].ToString());
+                var filter = Builders<BsonDocument>.Filter.Eq("workerId", Session["workerId"].ToString());
                 var update = Builders<BsonDocument>.Update.Set("pages.evaluation_page", evaluation_page);
                 await collectionResults.UpdateOneAsync(filter, update);
             }
             catch (Exception e)
             {
-                String PROLIFIC_PID = "";
-                if (Session["PROLIFIC_PID"] != null)
+                String workerId = "";
+                if (Session["workerId"] != null)
                 {
-                    PROLIFIC_PID = Session["PROLIFIC_PID"].ToString();
+                    workerId = Session["workerId"].ToString();
                 }
-                Constants.WriteErrorToDB(PROLIFIC_PID, "EvaluationData", e.Message, e.StackTrace);
+                Constants.WriteErrorToDB(workerId, "EvaluationData", e.Message, e.StackTrace);
             }
         }
 
 
         public ActionResult Replay()
         {
-            string workerId = Request.QueryString["PROLIFIC_PID"].ToString();
+            string workerId = Request.QueryString["workerId"].ToString();
             return View(fetchInfo());
         }
     }

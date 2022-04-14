@@ -40,7 +40,7 @@ namespace StarRankHIT.Controllers
                     {"selected_option", selectedOption},
                 };
 
-                var filter = Builders<BsonDocument>.Filter.Eq("PROLIFIC_PID", Session["PROLIFIC_PID"].ToString());
+                var filter = Builders<BsonDocument>.Filter.Eq("workerId", Session["workerId"].ToString());
                 var update = Builders<BsonDocument>.Update.Set("pages.welcome_page", welcome_page);
                 await collectionResults.UpdateOneAsync(filter, update);
             }

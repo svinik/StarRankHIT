@@ -44,7 +44,16 @@ function endFeedback() {
     }
 }
 
-function redirectToProlific() {
-    // TODO NEW_USER - place here the URL provided by Prolific.
-    //window.location.replace("");
+function submitHIT() {
+    $.ajax({
+        type: "POST",
+        url: "/star-rank-exp/Feedback/SubmitToMturk",
+        data: {},
+        success: function () {
+            // TODO: redirect to mturk?
+        },
+        error: function (jqXHR, exception) {
+            window.location.replace("/star-rank-exp/Home/Error?lastScreen=feedback");
+        }
+    });
 }

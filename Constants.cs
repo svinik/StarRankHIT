@@ -7,9 +7,9 @@ namespace StarRankHIT
 {
     public static class Constants
     {
-        public static String EMPTY_PROLIFIC_PID_STR = "EMPTY_PROLIFIC_PID";
-        public static String EMPTY_STUDY_ID_STR = "EMPTY_STUDY_ID";
-        public static String EMPTY_SESSION_ID_STR = "EMPTY_SESSION_ID";
+        public static String EMPTY_WORKER_ID = "EMPTY_WORKER_ID";
+        public static String EMPTY_HIT_ID = "EMPTY_HIT_ID";
+        public static String EMPTY_ASSIGNMENT_ID = "EMPTY_N_ID";
 
         public static String MTURK_ASSIGNMENT_NOT_AVAILABLE = "ASSIGNMENT_ID_NOT_AVAILABLE";
 
@@ -61,7 +61,7 @@ namespace StarRankHIT
             return str;
         }
 
-        public static void WriteErrorToDB(String PROLIFIC_PID, String function, String exceptionMessage, String stackTrace)
+        public static void WriteErrorToDB(String workerId, String function, String exceptionMessage, String stackTrace)
         {
             // WRITE DETAILS TO DB.
             var Client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["connectionString"].ToString());
@@ -71,7 +71,7 @@ namespace StarRankHIT
 
             var documnt = new BsonDocument
             {
-                {"PROLIFIC_PID", PROLIFIC_PID},
+                {"workerId", workerId},
                 {"function", function},
                 {"exception_message", exceptionMessage},
                 {"stack_trace", stackTrace},

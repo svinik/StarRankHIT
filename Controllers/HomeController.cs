@@ -14,27 +14,27 @@ namespace StarRankHIT.Controllers
         {
             try
             {
-                Session["PROLIFIC_PID"] = Request.QueryString["PROLIFIC_PID"];
-                Session["STUDY_ID"] = Request.QueryString["STUDY_ID"];
-                Session["SESSION_ID"] = Request.QueryString["SESSION_ID"];
+                Session["assignmentId"] = Request.QueryString["assignmentId"];
+                Session["hitId"] = Request.QueryString["hitId"];
+                Session["workerId"] = Request.QueryString["workerId"];
 
                 // manage debugging situations.
-                if (Session["PROLIFIC_PID"] == null)
+                if (Session["workerId"] == null)
                 {
-                    Session["PROLIFIC_PID"] = Constants.EMPTY_PROLIFIC_PID_STR;
+                    Session["workerId"] = Constants.EMPTY_WORKER_ID;
                 }
-                if (Session["STUDY_ID"] == null)
+                if (Session["hitId"] == null)
                 {
-                    Session["STUDY_ID"] = Constants.EMPTY_STUDY_ID_STR;
+                    Session["hitId"] = Constants.EMPTY_HIT_ID;
                 }
-                if (Session["SESSION_ID"] == null)
+                if (Session["assignmentId"] == null)
                 {
-                    Session["SESSION_ID"] = Constants.EMPTY_SESSION_ID_STR;
+                    Session["assignmentId"] = Constants.EMPTY_ASSIGNMENT_ID;
                 }
 
                 // prevent mobile devices.
                 if (Constants.IsMobileUser(Request.UserAgent.Trim().ToLower())) {
-                    await WriteRestrictedAcceptToDB("Mobile", Session["PROLIFIC_PID"].ToString(), Session["STUDY_ID"].ToString(), Session["SESSION_ID"].ToString(), Constants.APK_VER);
+                    await WriteRestrictedAcceptToDB("Mobile", Session["workerId"].ToString(), Session["hitId"].ToString(), Session["assignmentId"].ToString(), Constants.APK_VER);
                     return View("Mobile");
                 }
 
@@ -51,21 +51,21 @@ namespace StarRankHIT.Controllers
                     {
                         assignmentId = Session["assignment_id"].ToString();
                     }
-                    await WriteRestrictedAcceptToDB("Explorer", Session["PROLIFIC_PID"].ToString(), Session["STUDY_ID"].ToString(), Session["SESSION_ID"].ToString(), Constants.APK_VER);
+                    await WriteRestrictedAcceptToDB("Explorer", Session["workerId"].ToString(), Session["hitId"].ToString(), Session["assignmentId"].ToString(), Constants.APK_VER);
                     return View("Explorer");
                 };
 
                 Session["start_time_server"] = Constants.getTimeStamp();
 
                 // prevent multiple participation (except for in debug mode)
-                if (Session["PROLIFIC_PID"].ToString() != null)
+                if (Session["workerId"].ToString() != null)
                 {
-                    if (Session["PROLIFIC_PID"].ToString() != Constants.EMPTY_PROLIFIC_PID_STR)
+                    if (Session["workerId"].ToString() != Constants.EMPTY_WORKER_ID)
                     {
                         // ignore past workers from playing again.
-                        if (!IsNewWorker(Session["PROLIFIC_PID"].ToString()))
+                        if (!IsNewWorker(Session["workerId"].ToString()))
                         {
-                            await WriteAlreadyParticipatedToDB(Session["PROLIFIC_PID"].ToString(), Session["STUDY_ID"].ToString(), Session["SESSION_ID"].ToString(), Constants.APK_VER);
+                            await WriteAlreadyParticipatedToDB(Session["workerId"].ToString(), Session["hitId"].ToString(), Session["assignmentId"].ToString(), Constants.APK_VER);
                             return View("AlreadyParticipated");
                         }
                         // VALID WORKER! can start working.
@@ -75,17 +75,17 @@ namespace StarRankHIT.Controllers
                         }
                     }
                 }
-                await WriteDetailsToDB(Session["PROLIFIC_PID"].ToString(), Session["STUDY_ID"].ToString(), Session["SESSION_ID"].ToString(),
+                await WriteDetailsToDB(Session["workerId"].ToString(), Session["hitId"].ToString(), Session["assignmentId"].ToString(),
                          Session["start_time_server"].ToString(), Constants.APK_VER);
             }
             catch (Exception e)
             {
-                String PROLIFIC_PID = "";
-                if (Session["PROLIFIC_PID"] != null)
+                String workerId = "";
+                if (Session["workerId"] != null)
                 {
-                    PROLIFIC_PID = Session["PROLIFIC_PID"].ToString();
+                    workerId = Session["workerId"].ToString();
                 }
-                Constants.WriteErrorToDB(PROLIFIC_PID, "HomeIndex", e.Message, e.StackTrace);
+                Constants.WriteErrorToDB(workerId, "HomeIndex", e.Message, e.StackTrace);
             }
 
             // debug or real participant - start the experiment!
@@ -113,9 +113,9 @@ namespace StarRankHIT.Controllers
 
                 var workerDoc = new BsonDocument
             {
-                {"PROLIFIC_PID", Session["PROLIFIC_PID"].ToString()},
-                {"STUDY_ID", Session["STUDY_ID"].ToString()},
-                {"SESSION_ID", Session["SESSION_ID"].ToString()},
+                {"workerId", Session["workerId"].ToString()},
+                {"hitId", Session["hitId"].ToString()},
+                {"assignmentId", Session["assignmentId"].ToString()},
                 {"game_variant", Constants.GAME_VARIANT},
                 {"apk_version", Constants.APK_VER}
             };
@@ -148,9 +148,9 @@ namespace StarRankHIT.Controllers
 
                     var documnt = new BsonDocument
                     {
-                        {"PROLIFIC_PID", Session["PROLIFIC_PID"].ToString()},
-                        {"STUDY_ID", Session["STUDY_ID"].ToString() },
-                        {"SESSION_ID", Session["SESSION_ID"].ToString()},
+                        {"workerId", Session["workerId"].ToString()},
+                        {"hitId", Session["hitId"].ToString() },
+                        {"assignmentId", Session["assignmentId"].ToString()},
                         {"game_variant", Constants.GAME_VARIANT},
                         {"apk_version", Constants.APK_VER},
                         {"pages", pages},
@@ -166,12 +166,12 @@ namespace StarRankHIT.Controllers
             
             catch(Exception e)
             {
-                String PROLIFIC_PID = "";
-                if (Session["PROLIFIC_PID"] != null)
+                String workerId = "";
+                if (Session["workerId"] != null)
                 {
-                    PROLIFIC_PID = Session["PROLIFIC_PID"].ToString();
+                    workerId = Session["workerId"].ToString();
                 }
-                Constants.WriteErrorToDB(PROLIFIC_PID, "ConsentData", e.Message, e.StackTrace);
+                Constants.WriteErrorToDB(workerId, "ConsentData", e.Message, e.StackTrace);
             }
         }
 
@@ -182,7 +182,7 @@ namespace StarRankHIT.Controllers
             return View();
         }
 
-        public async Task WriteDetailsToDB(String PROLIFIC_PID, String STUDY_ID, String SESSION_ID,
+        public async Task WriteDetailsToDB(String workerId, String hitId, String assignmentId,
             String accept_hit_time, String apk_version)
         {
             // WRITE DETAILS TO DB.
@@ -194,9 +194,9 @@ namespace StarRankHIT.Controllers
             
             var workerDoc = new BsonDocument
             {
-                {"PROLIFIC_PID", PROLIFIC_PID},
-                {"STUDY_ID", STUDY_ID},
-                {"SESSION_ID", SESSION_ID},
+                {"workerId", workerId},
+                {"hitId", hitId},
+                {"assignmentId", assignmentId},
                 {"game_variant", Constants.GAME_VARIANT},
                 {"apk_version", apk_version},
                 {"start_time_server", accept_hit_time},
@@ -230,7 +230,7 @@ namespace StarRankHIT.Controllers
 
         
 
-        static async Task WriteAlreadyParticipatedToDB(String PROLIFIC_PID, String STUDY_ID, String SESSION_ID, String apk_version)
+        static async Task WriteAlreadyParticipatedToDB(String workerId, String hitId, String assignmentId, String apk_version)
         {
             // WRITE DETAILS TO DB.
             var Client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["connectionString"].ToString());
@@ -242,21 +242,21 @@ namespace StarRankHIT.Controllers
             var documnt = new BsonDocument
             {
                 {"current_apk_version", apk_version},
-                {"PROLIFIC_PID", PROLIFIC_PID},
-                {"STUDY_ID", STUDY_ID},
-                {"SESSION_ID", SESSION_ID},
+                {"workerId", workerId},
+                {"hitId", hitId},
+                {"assignmentId", assignmentId},
                 {"start_time_server", time},
             };
 
             await collection.InsertOneAsync(documnt);
         }
 
-        public Boolean IsNewWorker(String PROLIFIC_PID)
+        public Boolean IsNewWorker(String workerId)
         {
             var Client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["connectionString"].ToString());
             var DB = Client.GetDatabase(System.Configuration.ConfigurationManager.AppSettings["dbName"].ToString());
             var workersCollection = DB.GetCollection<BsonDocument>("participants-agreed");
-            var filter = Builders<BsonDocument>.Filter.Eq("PROLIFIC_PID", PROLIFIC_PID);
+            var filter = Builders<BsonDocument>.Filter.Eq("workerId", workerId);
             var results = workersCollection.Find(filter).ToList();
             if (results.Count > 0)
             {
@@ -283,7 +283,7 @@ namespace StarRankHIT.Controllers
             return View();
         }
 
-        static async Task WriteRestrictedAcceptToDB(String reason, String PROLIFIC_PID, String STUDY_ID, String SESSION_ID, String apk_version)
+        static async Task WriteRestrictedAcceptToDB(String reason, String workerId, String hitId, String assignmentId, String apk_version)
         {
             // WRITE DETAILS TO DB.
             var Client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["connectionString"].ToString());
@@ -296,9 +296,9 @@ namespace StarRankHIT.Controllers
             {
                 {"reason", reason},
                 {"apk_version", apk_version},
-                {"PROLIFIC_PID", PROLIFIC_PID},
-                {"STUDY_ID", STUDY_ID},
-                {"SESSION_ID", SESSION_ID},
+                {"workerId", workerId},
+                {"hitId", hitId},
+                {"assignmentId", assignmentId},
                 {"start_time_server", time},
                 {"user_interface", "Web"}
             };

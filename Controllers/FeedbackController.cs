@@ -3,11 +3,16 @@ using MongoDB.Driver;
 using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Net.Http;
+using System.Collections.Generic;
 
 namespace StarRankHIT.Controllers
 {
     public class FeedbackController : Controller
     {
+
+        private static readonly HttpClient client = new HttpClient();
+
         // GET: Feedback
         public ActionResult Index()
         {
@@ -45,19 +50,32 @@ namespace StarRankHIT.Controllers
                     {"warnings", warnings}
                 };
 
-                var filter = Builders<BsonDocument>.Filter.Eq("PROLIFIC_PID", Session["PROLIFIC_PID"].ToString());
+                var filter = Builders<BsonDocument>.Filter.Eq("workerId", Session["workerId"].ToString());
                 var update = Builders<BsonDocument>.Update.Set("pages.feedback_page", feedback_page).Set("experiment_total_time", Constants.GetTimeDiff(Session["start_time_server"].ToString(), feedbackEndTime)).Set("experiment_completed", true);
                 await collectionResults.UpdateOneAsync(filter, update);
             }
             catch (Exception e)
             {
-                String PROLIFIC_PID = "";
-                if (Session["PROLIFIC_PID"] != null)
+                String workerId = "";
+                if (Session["workerId"] != null)
                 {
-                    PROLIFIC_PID = Session["PROLIFIC_PID"].ToString();
+                    workerId = Session["workerId"].ToString();
                 }
-                Constants.WriteErrorToDB(PROLIFIC_PID, "FeedbackData", e.Message, e.StackTrace);
+                Constants.WriteErrorToDB(workerId, "FeedbackData", e.Message, e.StackTrace);
             }
+        }
+
+        public async Task SubmitToMturk()
+        {
+            var values = new Dictionary<string, string>
+              {
+                  { "assignmentId", Session["assignmentId"].ToString() }
+              };
+
+            var content = new FormUrlEncodedContent(values);
+            String mturkUrl = System.Configuration.ConfigurationManager.AppSettings["mturkUrl"].ToString();
+
+            await client.PostAsync(mturkUrl, content);
         }
     }
 }

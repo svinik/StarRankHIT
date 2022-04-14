@@ -63,18 +63,18 @@ namespace StarRankHIT.Views.Home
                     {"mistakes", mistakes}
                 };
 
-                var filter = Builders<BsonDocument>.Filter.Eq("PROLIFIC_PID", Session["PROLIFIC_PID"].ToString());
+                var filter = Builders<BsonDocument>.Filter.Eq("workerId", Session["workerId"].ToString());
                 var update = Builders<BsonDocument>.Update.Set("pages.personal_details_page", personal_details_page);
                 await collectionResults.UpdateOneAsync(filter, update);
             }
             catch(Exception e)
             {
-                String PROLIFIC_PID = "";
-                if (Session["PROLIFIC_PID"] != null)
+                String workerId = "";
+                if (Session["workerId"] != null)
                 {
-                    PROLIFIC_PID = Session["PROLIFIC_PID"].ToString();
+                    workerId = Session["workerId"].ToString();
                 }
-                Constants.WriteErrorToDB(PROLIFIC_PID, "PersonalDetailsData", e.Message, e.StackTrace);
+                Constants.WriteErrorToDB(workerId, "PersonalDetailsData", e.Message, e.StackTrace);
             }
         }
     }

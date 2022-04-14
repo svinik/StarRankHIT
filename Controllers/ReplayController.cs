@@ -12,11 +12,11 @@ namespace StarRankHIT.Controllers
         // GET: Replay
         public ActionResult Index()
         {
-            Session["PROLIFIC_PID"] = Request.QueryString["PROLIFIC_PID"];
+            Session["workerId"] = Request.QueryString["workerId"];
 
-            //Session["PROLIFIC_PID"] = "EMPTY_PROLIFIC_PID";
+            //Session["workerId"] = "EMPTY_workerId";
 
-            if (Session["PROLIFIC_PID"] == null)
+            if (Session["workerId"] == null)
             {
                 return View("NoID");
             }
@@ -25,7 +25,7 @@ namespace StarRankHIT.Controllers
                 var Client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["connectionString"].ToString());
                 var DB = Client.GetDatabase(System.Configuration.ConfigurationManager.AppSettings["dbName"].ToString());
                 var resultsCollection = DB.GetCollection<BsonDocument>("results");
-                var filter = Builders<BsonDocument>.Filter.Eq("PROLIFIC_PID", Session["PROLIFIC_PID"].ToString());
+                var filter = Builders<BsonDocument>.Filter.Eq("workerId", Session["workerId"].ToString());
                 var results = resultsCollection.Find(filter).ToList();
                 if (results.Count == 0)
                 {

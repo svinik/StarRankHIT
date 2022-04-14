@@ -74,7 +74,7 @@ namespace StarRankHIT.Controllers
 
             foreach (var participantResults in decisionsDocs)
             {
-                string PROLOFIC_PID = participantResults["PROLIFIC_PID"].ToString();
+                string PROLOFIC_PID = participantResults["workerId"].ToString();
                 var infos = participantResults["pages"]["evaluation_page"]["ratings_arr"];
 
                 var T = 0;
@@ -114,7 +114,7 @@ namespace StarRankHIT.Controllers
 
             foreach (var participantResults in docs)
             {
-                string PROLOFIC_PID = participantResults["PROLIFIC_PID"].ToString();
+                string PROLOFIC_PID = participantResults["workerId"].ToString();
 
                 ParticipantRecord participantRecord = new ParticipantRecord()
                 {
