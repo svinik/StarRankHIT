@@ -20,8 +20,10 @@ function EndConsent(hasAgreed) {
             agreed: hasAgreed,
             clickTimeClient: pageEndTime,
         },
-        success: function () {
-            if (hasAgreed) {
+        success: function (isPreview) {
+            if (isPreview) {
+                window.location.replace("/star-rank-exp/Home/Preview");
+            } else if (hasAgreed) {
                 window.location.replace("/star-rank-exp/PersonalDetails/Index");
             }
             else { // disagree - thank you for your time page.

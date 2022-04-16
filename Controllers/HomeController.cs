@@ -92,8 +92,13 @@ namespace StarRankHIT.Controllers
             return View("Introduction");
         }
 
-        public async Task ConsentData(String pageStartTimeClient, Boolean agreed, String clickTimeClient)
+        public async Task<ActionResult> ConsentData(String pageStartTimeClient, Boolean agreed, String clickTimeClient)
         {
+            if (Session["assignmentId"].Equals(Constants.EMPTY_ASSIGNMENT_ID))
+            {
+                return Json(true);
+            }
+
             try
             {
                 // WRITE DETAILS TO DB.
@@ -163,7 +168,6 @@ namespace StarRankHIT.Controllers
                     await collectionResults.InsertOneAsync(documnt);
                 }
             }
-            
             catch(Exception e)
             {
                 String workerId = "";
@@ -173,6 +177,8 @@ namespace StarRankHIT.Controllers
                 }
                 Constants.WriteErrorToDB(workerId, "ConsentData", e.Message, e.StackTrace);
             }
+          
+            return Json(false);
         }
 
         public ActionResult Error()
@@ -274,6 +280,11 @@ namespace StarRankHIT.Controllers
         }
 
         public ActionResult Disagree()
+        {
+            return View();
+        }
+
+        public ActionResult Preview()
         {
             return View();
         }

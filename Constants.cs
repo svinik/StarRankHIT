@@ -9,7 +9,7 @@ namespace StarRankHIT
     {
         public static String EMPTY_WORKER_ID = "EMPTY_WORKER_ID";
         public static String EMPTY_HIT_ID = "EMPTY_HIT_ID";
-        public static String EMPTY_ASSIGNMENT_ID = "EMPTY_N_ID";
+        public static String EMPTY_ASSIGNMENT_ID = "AVAILABLE_NOT_ID_ASSIGNMENT";
 
         public static String MTURK_ASSIGNMENT_NOT_AVAILABLE = "ASSIGNMENT_ID_NOT_AVAILABLE";
 

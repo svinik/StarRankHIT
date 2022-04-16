@@ -56,7 +56,7 @@ function resetButtons() {
     setTimeout(() => {
         buttonA.disabled = false;
         buttonB.disabled = false;
-    }, 0)
+    }, 4000)
 }
 
 function SetPair(pair) {
