@@ -42,15 +42,6 @@ namespace StarRankHIT.Controllers
                 if (IsExplorerUser())
                 {
                     // relevant in debug when no assigmentId was passed. Not necessary for Preview mode (there ASSIGNMENT_ID_NOT_AVAILABLE is passed).
-                    string assignmentId;
-                    if (Session["assignment_id"] == null)
-                    {
-                        assignmentId = "ASSIGNMENT_ID";
-                    }
-                    else
-                    {
-                        assignmentId = Session["assignment_id"].ToString();
-                    }
                     await WriteRestrictedAcceptToDB("Explorer", Session["workerId"].ToString(), Session["hitId"].ToString(), Session["assignmentId"].ToString(), Constants.APK_VER);
                     return View("Explorer");
                 };
@@ -89,7 +80,7 @@ namespace StarRankHIT.Controllers
             }
 
             // debug or real participant - start the experiment!
-            return View("Introduction");
+            return View("Introduction", Session["assignmentId"]);
         }
 
         public async Task<ActionResult> ConsentData(String pageStartTimeClient, Boolean agreed, String clickTimeClient)

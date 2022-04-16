@@ -172,16 +172,6 @@ function startEvaluationPage() {
 
     SetPair(pairs[current]);
     resetButtons();
-
-    /*for (var index1 = 0; index1 < pairs.length; index1++) {
-        finalDecisions.push({
-            "index": index1,
-            "option": null,
-            "id": null,
-            "history": "",
-            "changes": -1
-        });
-    }*/
 }
 
 function endEvaluation() {
@@ -200,7 +190,6 @@ function endEvaluation() {
                 evaluationStartTime: evaluationStartTime,
                 evaluationEndTime: evaluationEndTime,
                 decisions: JSON.stringify(decisions),
-                //finalDecisions: JSON.stringify(finalDecisions),
                 decisionsStr: decisionsStr,
                 warnings: warnings
             },
@@ -244,25 +233,6 @@ function optionSelected(option) {
     else {
         decisionsStr += "#" + decisionStr;
     }
-    // update the relevant element in rating array.
-    /*if (finalDecisions[index].index != index) {
-        alert("indexing error");
-        return;
-    }
-    else {
-        finalDecisions[index].option = option;
-        finalDecisions[index].id= id;
-
-        if (finalDecisions[index].history == "") {
-            finalDecisions[index].history += option;
-        }
-        else {
-            finalDecisions[index].history += "#" + option;
-        }
-
-        finalDecisions[index].changes = finalDecisions[index].changes + 1;
-    }*/
-
 
     next();
 }
