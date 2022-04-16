@@ -65,11 +65,13 @@ namespace StarRankHIT.Controllers
             }
         }
 
-        public async Task<String> SubmitToMturk()
+        public String SubmitToMturk()
         {
             String mturkUrl = System.Configuration.ConfigurationManager.AppSettings["mturkUrl"].ToString();
 
-            return mturkUrl + "?assignmentId=" + Session["assignmentId"].ToString();
+            return mturkUrl + "?assignmentId=" + Session["assignmentId"].ToString() 
+                + "&hitId=" + Session["hitId"].ToString() 
+                + "&workerId=" + Session["workerId"].ToString();
         }
     }
 }
