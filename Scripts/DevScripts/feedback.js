@@ -33,8 +33,9 @@ function endFeedback() {
                 issues: issues,
                 warnings: warnings
             },
-            success: function (response) {
-                window.location.replace(response);
+            success: function () {
+                document.getElementById('feedback_id').style.display = "none";
+                document.getElementById('submit_id').style.display = "block";
             },
             error: function (jqXHR, exception) {
                 window.location.replace("/star-rank-exp/Home/Error?lastScreen=feedback");
@@ -48,8 +49,8 @@ function submitHIT() {
         type: "POST",
         url: "/star-rank-exp/Feedback/SubmitToMturk",
         data: {},
-        success: function () {
-            // TODO: redirect to mturk?
+        success: function (response) {
+            window.location.replace(response);
         },
         error: function (jqXHR, exception) {
             window.location.replace("/star-rank-exp/Home/Error?lastScreen=feedback");
