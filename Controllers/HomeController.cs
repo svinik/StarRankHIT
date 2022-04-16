@@ -80,12 +80,12 @@ namespace StarRankHIT.Controllers
             }
 
             // debug or real participant - start the experiment!
-            return View("Introduction", Session["assignmentId"]);
+            return View("Introduction");
         }
 
         public async Task<ActionResult> ConsentData(String pageStartTimeClient, Boolean agreed, String clickTimeClient)
         {
-            if (Session["assignmentId"].Equals(Constants.EMPTY_ASSIGNMENT_ID))
+            if (Constants.EMPTY_ASSIGNMENT_ID.Equals(Session["assignmentId"].ToString()))
             {
                 return Json(true);
             }
