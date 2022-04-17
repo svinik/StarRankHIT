@@ -21,9 +21,11 @@ function EndConsent(hasAgreed) {
             clickTimeClient: pageEndTime,
         },
         success: function (isPreview) {
-            if (isPreview) {
+            /*if (isPreview) {
                 window.location.replace("/star-rank-exp/Home/Preview");
-            } else if (hasAgreed) {
+            } else*/
+
+                if (hasAgreed) {
                 window.location.replace("/star-rank-exp/PersonalDetails/Index");
             }
             else { // disagree - thank you for your time page.
@@ -31,8 +33,6 @@ function EndConsent(hasAgreed) {
             }
         },
         error: function (jqXHR, exception) {
-            console.log(jqXHR);
-            console.log(exception);
             window.location.replace("/star-rank-exp/Home/Error?lastScreen=consent");
         }
     });

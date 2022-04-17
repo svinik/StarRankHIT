@@ -83,12 +83,14 @@ namespace StarRankHIT.Controllers
             return View("Introduction");
         }
 
-        public async Task<ActionResult> ConsentData(String pageStartTimeClient, Boolean agreed, String clickTimeClient)
+        public async Task ConsentData(String pageStartTimeClient, Boolean agreed, String clickTimeClient)
         {
+            /*
             if (Constants.EMPTY_ASSIGNMENT_ID.Equals(Session["assignmentId"].ToString()))
             {
                 return Json(true);
             }
+            */
 
             try
             {
@@ -169,7 +171,7 @@ namespace StarRankHIT.Controllers
                 Constants.WriteErrorToDB(workerId, "ConsentData", e.Message, e.StackTrace);
             }
           
-            return Json(false);
+            //return Json(false);
         }
 
         public ActionResult Error()
