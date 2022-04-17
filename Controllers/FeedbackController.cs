@@ -69,9 +69,8 @@ namespace StarRankHIT.Controllers
         {
             String mturkUrl = "https://workersandbox.mturk.com/mturk/externalSubmit";
 
-            return mturkUrl + "?assignmentId=" + Session["assignmentId"].ToString() 
-                + "&hitId=" + Session["hitId"].ToString() 
-                + "&workerId=" + Session["workerId"].ToString();
+            return mturkUrl + "?assignmentId=" + Session["assignmentId"].ToString()
+                + "&foo=bar";
         }
     }
 }
