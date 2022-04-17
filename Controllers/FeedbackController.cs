@@ -67,7 +67,7 @@ namespace StarRankHIT.Controllers
 
         public String SubmitToMturk()
         {
-            String mturkUrl = System.Configuration.ConfigurationManager.AppSettings["mturkUrl"].ToString();
+            String mturkUrl = "https://workersandbox.mturk.com/mturk/externalSubmit";
 
             return mturkUrl + "?assignmentId=" + Session["assignmentId"].ToString() 
                 + "&hitId=" + Session["hitId"].ToString() 
