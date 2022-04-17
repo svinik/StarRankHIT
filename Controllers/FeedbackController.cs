@@ -17,7 +17,7 @@ namespace StarRankHIT.Controllers
         public ActionResult Index()
         {
             Session["feedback_time_server"] = Constants.getTimeStamp();
-            return View("Feedback");
+            return View("Feedback", SubmitUrl());
         }
 
         public async Task FeedbackData(String feedbackStartTime, String feedbackEndTime, string reasoning, string affect, string importance, string otherInfo, string issues, int warnings)
@@ -65,7 +65,7 @@ namespace StarRankHIT.Controllers
             }
         }
 
-        public String SubmitToMturk()
+        public String SubmitUrl()
         {
             String mturkUrl = "https://workersandbox.mturk.com/mturk/externalSubmit";
 

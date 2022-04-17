@@ -44,15 +44,6 @@ function endFeedback() {
     }
 }
 
-function submitHIT() {
-    $.ajax({
-        type: "GET",
-        url: "/star-rank-exp/Feedback/SubmitToMturk",
-        success: function (response) {
-            window.location.replace(response);
-        },
-        error: function (jqXHR, exception) {
-            window.location.replace("/star-rank-exp/Home/Error?lastScreen=feedback");
-        }
-    });
+function submitHIT(submitUrl) {
+    window.location.replace(submitUrl);
 }
