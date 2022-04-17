@@ -46,9 +46,8 @@ function endFeedback() {
 
 function submitHIT() {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: "/star-rank-exp/Feedback/SubmitToMturk",
-        data: {},
         success: function (response) {
             window.location.replace(response);
         },
