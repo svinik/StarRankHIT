@@ -184,7 +184,7 @@ function endEvaluation() {
     }, function () {
         $.ajax({
             type: "POST",
-            url: "/star-rank-exp/Evaluation/EvaluationData",
+            url: "/Evaluation/EvaluationData",
             data: {
                 startDate: startDate,
                 evaluationStartTime: evaluationStartTime,
@@ -194,10 +194,10 @@ function endEvaluation() {
                 warnings: warnings
             },
             success: function () {
-                window.location.replace("/star-rank-exp/Feedback/Index"); //to prevent page back
+                window.location.replace("/Feedback/Index"); //to prevent page back
             },
             error: function (jqXHR, exception) {
-                window.location.replace("/star-rank-exp/Home/Error?lastScreen=evaluation");
+                window.location.replace("/Home/Error?lastScreen=evaluation");
             }
         });
     });
