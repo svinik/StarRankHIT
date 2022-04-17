@@ -31,6 +31,8 @@ function EndConsent(hasAgreed) {
             }
         },
         error: function (jqXHR, exception) {
+            console.log(jqXHR);
+            console.log(exception);
             window.location.replace("/star-rank-exp/Home/Error?lastScreen=consent");
         }
     });
