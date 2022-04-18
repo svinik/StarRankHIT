@@ -17,9 +17,9 @@ namespace StarRankHIT.Controllers
         public ActionResult Index()
         {
             Session["feedback_time_server"] = Constants.getTimeStamp();
-            Object submitUrl = SubmitUrl();
+            string submitUrl = SubmitUrl();
 
-            return View("Feedback", submitUrl);
+            return View("Feedback", null, submitUrl);
         }
 
         public async Task FeedbackData(String feedbackStartTime, String feedbackEndTime, string reasoning, string affect, string importance, string otherInfo, string issues, int warnings)
@@ -67,9 +67,9 @@ namespace StarRankHIT.Controllers
             }
         }
 
-        private Object SubmitUrl()
+        private string SubmitUrl()
         {
-            String mturkUrl = "https://workersandbox.mturk.com/mturk/externalSubmit";
+            string mturkUrl = "https://workersandbox.mturk.com/mturk/externalSubmit";
 
             return mturkUrl + "?assignmentId=" + Session["assignmentId"].ToString()
                 + "&foo=bar";
