@@ -1,3 +1,3 @@
 ﻿function EndIntroduction() {
-    window.location.replace("/Consent/Index");
+    window.location.replace("/star-rank-exp/Consent/Index");
 }
