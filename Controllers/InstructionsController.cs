@@ -12,7 +12,10 @@ namespace StarRankHIT.Controllers
         public ActionResult Index()
         {
             Session["instructions_time_server"] = Constants.getTimeStamp();
-            return View("Instructions");
+            Boolean inPreview = Constants.EMPTY_ASSIGNMENT_ID.Equals(Session["assignmentId"]);
+
+
+            return View("Instructions", inPreview);
         }
 
         public async Task InstructionsData(string instructionsStartTime, string pageEndTime, string selectedOption)

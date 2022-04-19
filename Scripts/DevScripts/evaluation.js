@@ -56,7 +56,7 @@ function resetButtons() {
     setTimeout(() => {
         buttonA.disabled = false;
         buttonB.disabled = false;
-    }, 0)
+    }, 4000)
 }
 
 function SetPair(pair) {
@@ -175,6 +175,11 @@ function startEvaluationPage() {
 }
 
 function endEvaluation() {
+    var buttonA = document.getElementsByClassName('choose-button')[0];
+    var buttonB = document.getElementsByClassName('choose-button')[1];
+    buttonA.disabled = true;
+    buttonB.disabled = true;
+
     evaluationEndTime = getTimeStampIL(new Date());
     swal({
         title: "Evaluation Done",
@@ -184,7 +189,7 @@ function endEvaluation() {
     }, function () {
         $.ajax({
             type: "POST",
-            url: "/star-rank-exp/Evaluation/EvaluationData",
+            url: "/Evaluation/EvaluationData",
             data: {
                 startDate: startDate,
                 evaluationStartTime: evaluationStartTime,
@@ -194,10 +199,10 @@ function endEvaluation() {
                 warnings: warnings
             },
             success: function () {
-                window.location.replace("/star-rank-exp/Feedback/Index"); //to prevent page back
+                window.location.replace("/Feedback/Index"); //to prevent page back
             },
             error: function (jqXHR, exception) {
-                window.location.replace("/star-rank-exp/Home/Error?lastScreen=evaluation");
+                window.location.replace("/Home/Error?lastScreen=evaluation");
             }
         });
     });

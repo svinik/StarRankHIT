@@ -134,29 +134,53 @@ function startInstructionsPage() {
     });
 }
 
-function endQuiz(option) {
+function endQuiz(option, inPreview) {
+    var buttonA = document.getElementsByClassName('choose-button')[0];
+    var buttonB = document.getElementsByClassName('choose-button')[1];
+    buttonA.disabled = true;
+    buttonB.disabled = true;
+
     pageEndTime = getTimeStampIL(new Date());
-    swal({
-        title: "Good job!",
-        text: "Start the evaluation task?",
-        type: "success",
-        showConfirmButton: true
-    }, function () {
-        $.ajax({
-            type: "POST",
-            url: "/star-rank-exp/Instructions/InstructionsData",
-            data: {
-                instructionsStartTime: instructionsStartTime,
-                pageEndTime: pageEndTime,
-                selectedOption: option
-            },
-            success: function () {
-                window.location.replace("/star-rank-exp/Evaluation/Evaluation"); //to prevent page back
-            },
-            error: function (jqXHR, exception) {
-                window.location.replace("/star-rank-exp/Home/Error?lastScreen=welcome");
-            }
+
+    if (inPreview) {
+        swal({
+            title: "Practice completed",
+            text: "To continue, please accept the HIT",
+            showConfirmButton: false
+        }, function () {
+            $.ajax({
+                type: "POST",
+                url: "/Instructions/InstructionsData",
+                data: {
+                    instructionsStartTime: instructionsStartTime,
+                    pageEndTime: pageEndTime,
+                    selectedOption: option
+                }
+            });
         });
-    });
+    } else {
+        swal({
+            title: "Practice completed",
+            text: "Start the evaluation task?",
+            showConfirmButton: true
+        }, function () {
+            $.ajax({
+                type: "POST",
+                url: "/Instructions/InstructionsData",
+                data: {
+                    instructionsStartTime: instructionsStartTime,
+                    pageEndTime: pageEndTime,
+                    selectedOption: option
+                },
+                success: function () {
+                    window.location.replace("/Evaluation/Evaluation"); //to prevent page back
+                },
+                error: function (jqXHR, exception) {
+                    window.location.replace("/Home/Error?lastScreen=welcome");
+                }
+            });
+        });
+    }
+    
     return;
 }

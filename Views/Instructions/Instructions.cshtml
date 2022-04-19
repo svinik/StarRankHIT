@@ -16,7 +16,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Welcome</title>
+    <title>Instructions</title>
     <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
@@ -40,11 +40,11 @@
                 <div class="options-container">
                     <div class="option-container">
                         <canvas class="rank_chart" id="myChart1"></canvas>
-                        <button class="button choose-button" onclick="endQuiz(); return false;">This is my choice</button>
+                        <button class="button choose-button" onclick="endQuiz('a', @Model); return false;">This is my choice</button>
                     </div>
                     <div class="option-container">
                         <canvas class="rank_chart" id="myChart2"></canvas>
-                        <button class="button choose-button" onclick="endQuiz(); return false;">This is my choice</button>
+                        <button class="button choose-button" onclick="endQuiz('b', @Model); return false;">This is my choice</button>
                     </div>
                 </div>
                 <br /><br />
