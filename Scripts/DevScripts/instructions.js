@@ -161,7 +161,7 @@ function endQuiz(option, inPreview) {
     } else {
         swal({
             title: "Practice completed",
-            text: "Start the choosing task?",
+            text: "Start the selection task?",
             showConfirmButton: true
         }, function () {
             $.ajax({

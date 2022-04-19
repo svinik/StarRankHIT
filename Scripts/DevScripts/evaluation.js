@@ -181,7 +181,7 @@ function endEvaluation() {
 
     evaluationEndTime = getTimeStampIL(new Date());
     swal({
-        title: "Choosing Done",
+        title: "Selection Done",
         type: "success",
         confirmButtonText: "Next",
         showConfirmButton: true
