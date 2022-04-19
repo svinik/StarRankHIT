@@ -44,7 +44,7 @@ namespace StarRankHIT.Controllers
                 };
 
                 var filter = Builders<BsonDocument>.Filter.Eq("workerId", Session["workerId"].ToString());
-                var update = Builders<BsonDocument>.Update.Set("pages.welcome_page", welcome_page);
+                var update = Builders<BsonDocument>.Update.Set("pages.instructions_page", welcome_page);
                 await collectionResults.UpdateOneAsync(filter, update);
             }
             catch (Exception e)

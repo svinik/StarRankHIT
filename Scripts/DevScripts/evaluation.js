@@ -6,7 +6,6 @@ var decisions = [];
 //var finalDecisions = [];
 var decisionsStr = "";
 var evaluationStartTime;
-var warnings = 0;
 var startDate;
 var current = 0;
 var pairs = [];
@@ -195,8 +194,7 @@ function endEvaluation() {
                 evaluationStartTime: evaluationStartTime,
                 evaluationEndTime: evaluationEndTime,
                 decisions: JSON.stringify(decisions),
-                decisionsStr: decisionsStr,
-                warnings: warnings
+                decisionsStr: decisionsStr
             },
             success: function () {
                 window.location.replace("/star-rank-exp/Feedback/Index"); //to prevent page back
