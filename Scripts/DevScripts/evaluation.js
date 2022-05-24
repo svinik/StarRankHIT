@@ -3,13 +3,13 @@ Chart.register(ChartDataLabels);
 Chart.defaults.font.family = "'FontAwesome', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'";
 
 var decisions = [];
-//var finalDecisions = [];
-var decisionsStr = "";
 var evaluationStartTime;
 var startDate;
 var current = 0;
 var pairs = [];
 
+var firstValIdx = 5
+var secondValIdx = 11
 
 $('[data-pair]').each(function () {
     var pairData = $(this).data('pair');
@@ -22,6 +22,46 @@ $('[data-id]').each(function () {
     pairs[i]._id = idData.slice(1, -1);
     i++;
 });
+
+// create validation pairs
+var valPair1 = {
+    first: {
+        star5: 54,
+        star4: 21,
+        star3: 15,
+        star2: 4,
+        star1: 6
+    },
+    second: {
+        star5: 7,
+        star4: 0,
+        star3: 3,
+        star2: 18,
+        star1: 82
+    },
+    id: "val1"
+}
+
+var valPair2 = {
+    first: {
+        star5: 4,
+        star4: 5,
+        star3: 7,
+        star2: 17,
+        star1: 67
+    },
+    second: {
+        star5: 53,
+        star4: 37,
+        star3: 2,
+        star2: 1,
+        star1: 7
+    },
+    id: "val2"
+}
+
+pairs.splice(firstValIdx, 0, valPair1);
+pairs.splice(secondValIdx, 0, valPair2);
 
 // convert pairs to prec
 for (var pair of pairs) {
@@ -55,7 +95,7 @@ function resetButtons() {
     setTimeout(() => {
         buttonA.disabled = false;
         buttonB.disabled = false;
-    }, 4000)
+    }, 0)
 }
 
 function SetPair(pair) {
@@ -173,12 +213,25 @@ function startEvaluationPage() {
     resetButtons();
 }
 
+function checkValidationPairs() {
+    var valDecision1 = decisions[firstValIdx];
+    var valDecision2 = decisions[secondValIdx];
+    decisions.splice(secondValIdx, 1);
+    decisions.splice(firstValIdx, 1);
+
+    if (valDecision1.option != 'a')
+        return false;
+    if (valDecision2.option != 'b')
+        return false;
+    return true;
+}
+
 function endEvaluation() {
     var buttonA = document.getElementsByClassName('choose-button')[0];
     var buttonB = document.getElementsByClassName('choose-button')[1];
     buttonA.disabled = true;
     buttonB.disabled = true;
-
+    var passedValidation = checkValidationPairs();
     evaluationEndTime = getTimeStampIL(new Date());
     swal({
         title: "Selection Done",
@@ -194,7 +247,7 @@ function endEvaluation() {
                 evaluationStartTime: evaluationStartTime,
                 evaluationEndTime: evaluationEndTime,
                 decisions: JSON.stringify(decisions),
-                decisionsStr: decisionsStr
+                passedValidation: passedValidation
             },
             success: function () {
                 window.location.replace("/star-rank-exp/Feedback/Index"); //to prevent page back
@@ -229,14 +282,6 @@ function optionSelected(option) {
     };
 
     decisions.push(decision);
-    var decisionStr = "index->" + index + "," + "option->" + option+ "," + "date->" + d;
-    if (decisionsStr == "") {
-        decisionsStr += decisionStr;
-    }
-    else {
-        decisionsStr += "#" + decisionStr;
-    }
-
     next();
 }
 

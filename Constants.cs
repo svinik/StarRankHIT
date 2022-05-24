@@ -11,7 +11,7 @@ namespace StarRankHIT
         public static String EMPTY_HIT_ID = "EMPTY_HIT_ID";
         public static String EMPTY_ASSIGNMENT_ID = "ASSIGNMENT_ID_NOT_AVAILABLE";
 
-        public static String APK_VER = "1.0.0";
+        public static String APK_VER = "1.0.1";
 
         public static String GAME_VARIANT = "StarRankHIT";
 
@@ -95,7 +95,7 @@ namespace StarRankHIT
 
         public static string GetIPAddress()
         {
-            //If I use the Binding Address Localhost:5000 then the IP is returned as "::1" (Localhost IPv6 address). If I bind my Webapi on the IP Address and try to reach it from another client computer, I get Client's IP Address in API Response.
+            // If I use the Binding Address Localhost:5000 then the IP is returned as "::1" (Localhost IPv6 address). If I bind my Webapi on the IP Address and try to reach it from another client computer, I get Client's IP Address in API Response.
             System.Web.HttpContext context = System.Web.HttpContext.Current;
             string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 

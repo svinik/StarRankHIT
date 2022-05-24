@@ -31,9 +31,14 @@ namespace StarRankHIT.Controllers
                 {
                     Session["assignmentId"] = Constants.EMPTY_ASSIGNMENT_ID;
                 }
-
+                
+                String userAgent = "";
+                if(Request.UserAgent != null)
+                {
+                    userAgent = Request.UserAgent;
+                }
                 // prevent mobile devices.
-                if (Constants.IsMobileUser(Request.UserAgent.Trim().ToLower())) {
+                if (Constants.IsMobileUser(userAgent.Trim().ToLower())) {
                     await WriteRestrictedAcceptToDB("Mobile", Session["workerId"].ToString(), Session["hitId"].ToString(), Session["assignmentId"].ToString(), Constants.APK_VER);
                     return View("Mobile");
                 }

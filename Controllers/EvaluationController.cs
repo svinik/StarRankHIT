@@ -62,7 +62,7 @@ namespace StarRankHIT.Controllers
 
         }
 
-        public async Task EvaluationData(string startDate, string evaluationStartTime, string evaluationEndTime, string decisions, string decisionsStr)
+        public async Task EvaluationData(string startDate, string evaluationStartTime, string evaluationEndTime, string decisions, bool passedValidation)
         {
             try
             {
@@ -92,7 +92,8 @@ namespace StarRankHIT.Controllers
                 {
                     {"times", times},
                     {"decisions_arr", bsonArrayDecisions},
-                    {"decisions_arr_str", decisionsStr}                };
+                    {"passed_validation", passedValidation }
+                };
 
                 var filter = Builders<BsonDocument>.Filter.Eq("workerId", Session["workerId"].ToString());
                 var update = Builders<BsonDocument>.Update.Set("pages.evaluation_page", evaluation_page);
