@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StarRankHIT.Models
 {
-    public class DistributionPair
+    public class DistributionPair : IComparable<DistributionPair>
     {
         public ObjectId _id;
         public Distribution first;
@@ -14,6 +14,12 @@ namespace StarRankHIT.Models
         public string category;
         public string site;
         public string type;
+        public int count;
+
+        public int CompareTo(DistributionPair other)
+        {
+            return this._id.CompareTo(other._id);
+        }
     }
 
 

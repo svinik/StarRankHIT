@@ -22,7 +22,7 @@ function resetButtons() {
     setTimeout(() => {
         buttonA.disabled = false;
         buttonB.disabled = false;
-    }, 4000)
+    }, 0)
 }
 
 function startInstructionsPage() {
@@ -146,11 +146,15 @@ function endQuiz(option, inPreview) {
         swal({
             title: "Practice completed",
             text: "To continue, please accept the HIT",
-            showConfirmButton: false
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            closeOnClickOutside: false,
+            allowEscapeKey: false,
+            preConfirm: false
         }, function () {
             $.ajax({
                 type: "POST",
-                url: "/star-rank-exp/Instructions/InstructionsData",
+                url: "/Instructions/InstructionsData",
                 data: {
                     instructionsStartTime: instructionsStartTime,
                     pageEndTime: pageEndTime,
@@ -162,25 +166,28 @@ function endQuiz(option, inPreview) {
         swal({
             title: "Practice completed",
             text: "Start the selection task?",
-            showConfirmButton: true
-        }, function () {
+            showConfirmButton: true,
+            allowOutsideClick: false,
+            closeOnClickOutside: false,
+            allowEscapeKey: false,
+            preConfirm: false
+        }, function (isConfirm) {
             $.ajax({
                 type: "POST",
-                url: "/star-rank-exp/Instructions/InstructionsData",
+                url: "/Instructions/InstructionsData",
                 data: {
                     instructionsStartTime: instructionsStartTime,
                     pageEndTime: pageEndTime,
                     selectedOption: option
                 },
                 success: function () {
-                    window.location.replace("/star-rank-exp/Evaluation/Evaluation"); //to prevent page back
+                    window.location.replace("/Evaluation/Evaluation"); //to prevent page back
                 },
                 error: function (jqXHR, exception) {
-                    window.location.replace("/star-rank-exp/Home/Error?lastScreen=welcome");
+                    window.location.replace("/Home/Error?lastScreen=welcome");
                 }
             });
         });
     }
-    
     return;
 }

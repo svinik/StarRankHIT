@@ -107,3 +107,6 @@ C:\Users\roy-s\source\repos\StarRankHIT\StarRankHIT\bin\System.Memory.xml
 C:\Users\roy-s\source\repos\StarRankHIT\StarRankHIT\bin\System.Numerics.Vectors.xml
 C:\Users\roy-s\source\repos\StarRankHIT\StarRankHIT\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\roy-s\source\repos\StarRankHIT\StarRankHIT\bin\System.Text.Encoding.CodePages.xml
+C:\Users\roy-s\source\repos\StarRankHIT\StarRankHIT\bin\WeightedRandomizer.dll
+C:\Users\roy-s\source\repos\StarRankHIT\StarRankHIT\bin\WeightedRandomizer.pdb
+C:\Users\roy-s\source\repos\StarRankHIT\StarRankHIT\bin\WeightedRandomizer.xml

@@ -35,7 +35,7 @@
           <SQLDebugging>False</SQLDebugging>
           <ExternalProgram>
           </ExternalProgram>
-          <StartExternalURL>https://localhost:44366?assignmentId=testingvalidations2&amp;hitId=123RVWYBAZW00EXAMPLE&amp;workerId=testingvals3</StartExternalURL>
+          <StartExternalURL>https://localhost:44366?assignmentId=newassid2&amp;hitId=123RVWYBAZW00EXAMPLE&amp;workerId=testingvals3</StartExternalURL>
           <StartCmdLineArguments>
           </StartCmdLineArguments>
           <StartWorkingDirectory>
