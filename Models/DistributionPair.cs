@@ -32,5 +32,6 @@ namespace StarRankHIT.Models
         public int star5;
         public string name;
         public string url;
+        public int total_votes;
     }
 }

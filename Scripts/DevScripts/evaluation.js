@@ -30,14 +30,16 @@ var valPair1 = {
         star4: 21,
         star3: 15,
         star2: 4,
-        star1: 6
+        star1: 6,
+        total_votes: 100
     },
     second: {
         star5: 7,
         star4: 0,
         star3: 3,
         star2: 18,
-        star1: 82
+        star1: 82,
+        total_votes: 100
     },
     id: "val1"
 }
@@ -48,14 +50,16 @@ var valPair2 = {
         star4: 5,
         star3: 7,
         star2: 17,
-        star1: 67
+        star1: 67,
+        total_votes: 1000
     },
     second: {
         star5: 53,
         star4: 37,
         star3: 2,
         star2: 1,
-        star1: 7
+        star1: 7,
+        total_votes: 1000
     },
     id: "val2"
 }
@@ -112,6 +116,10 @@ function SetPair(pair) {
         options: {
             indexAxis: 'y',
             plugins: {
+                title: {
+                    text: pair.first.total_votes + ' total votes',
+                    display: true
+                },
                 tooltip: {
                     enabled: false
                 },
@@ -164,6 +172,10 @@ function SetPair(pair) {
         options: {
             indexAxis: 'y',
             plugins: {
+                title: {
+                    text: pair.second.total_votes + ' total votes',
+                    display: true
+                },
                 tooltip: {
                     enabled: false
                 },
