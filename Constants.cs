@@ -11,7 +11,7 @@ namespace StarRankHIT
         public static String EMPTY_HIT_ID = "EMPTY_HIT_ID";
         public static String EMPTY_ASSIGNMENT_ID = "ASSIGNMENT_ID_NOT_AVAILABLE";
 
-        public static String APK_VER = "1.0.1";
+        public static String APK_VER = "1.0.2";
 
         public static String GAME_VARIANT = "StarRankHIT";
 

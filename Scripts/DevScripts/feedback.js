@@ -1,4 +1,4 @@
-﻿var warnings = 0;
+var warnings = 0;
 var feedbackStartTime;
 
 function startFeedbackPage() {

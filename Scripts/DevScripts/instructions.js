@@ -1,4 +1,4 @@
-﻿// Register the plugin to all charts:
+// Register the plugin to all charts:
 Chart.register(ChartDataLabels);
 Chart.defaults.font.family = "'FontAwesome', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'";
 
@@ -44,7 +44,10 @@ function startInstructionsPage() {
                 title: {
                     text: '100 total votes',
                     display: true,
-                    position: "bottom"
+                    position: "bottom",
+                    font: {
+                        size: 20
+                    }
                 },
                 tooltip: {
                     enabled: false
@@ -101,7 +104,10 @@ function startInstructionsPage() {
                 title: {
                     text: '100 total votes',
                     display: true,
-                    position: "bottom"
+                    position: "bottom",
+                    font: {
+                        size: 20
+                    }
                 },
                 tooltip: {
                     enabled: false
