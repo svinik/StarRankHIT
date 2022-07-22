@@ -31,7 +31,7 @@ var valPair1 = {
         star3: 15,
         star2: 4,
         star1: 6,
-        total_votes: 100
+        total_votes: 791
     },
     second: {
         star5: 7,
@@ -39,7 +39,7 @@ var valPair1 = {
         star3: 3,
         star2: 18,
         star1: 82,
-        total_votes: 100
+        total_votes: 32
     },
     id: "val1"
 }
@@ -51,7 +51,7 @@ var valPair2 = {
         star3: 7,
         star2: 17,
         star1: 67,
-        total_votes: 1000
+        total_votes: 17
     },
     second: {
         star5: 53,
@@ -59,7 +59,7 @@ var valPair2 = {
         star3: 2,
         star2: 1,
         star1: 7,
-        total_votes: 1000
+        total_votes: 545
     },
     id: "val2"
 }
@@ -99,7 +99,7 @@ function resetButtons() {
     setTimeout(() => {
         buttonA.disabled = false;
         buttonB.disabled = false;
-    }, 0)
+    }, 4000)
 }
 
 function SetPair(pair) {
@@ -118,7 +118,8 @@ function SetPair(pair) {
             plugins: {
                 title: {
                     text: pair.first.total_votes + ' total votes',
-                    display: true
+                    display: true,
+                    position: "bottom"
                 },
                 tooltip: {
                     enabled: false
@@ -174,7 +175,8 @@ function SetPair(pair) {
             plugins: {
                 title: {
                     text: pair.second.total_votes + ' total votes',
-                    display: true
+                    display: true,
+                    position: "bottom"
                 },
                 tooltip: {
                     enabled: false
@@ -257,7 +259,7 @@ function endEvaluation() {
     }, function (isConfirm) {
         $.ajax({
             type: "POST",
-            url: "/Evaluation/EvaluationData",
+            url: "/star-rank-exp/Evaluation/EvaluationData",
             data: {
                 startDate: startDate,
                 evaluationStartTime: evaluationStartTime,
@@ -266,10 +268,10 @@ function endEvaluation() {
                 passedValidation: passedValidation
             },
             success: function () {
-                window.location.replace("/Feedback/Index"); //to prevent page back
+                window.location.replace("/star-rank-exp/Feedback/Index"); //to prevent page back
             },
             error: function (jqXHR, exception) {
-                window.location.replace("/Home/Error?lastScreen=evaluation");
+                window.location.replace("/star-rank-exp/Home/Error?lastScreen=evaluation");
             }
         });
     });

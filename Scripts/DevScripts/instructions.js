@@ -22,7 +22,7 @@ function resetButtons() {
     setTimeout(() => {
         buttonA.disabled = false;
         buttonB.disabled = false;
-    }, 0)
+    }, 4000)
 }
 
 function startInstructionsPage() {
@@ -41,6 +41,11 @@ function startInstructionsPage() {
         options: {
             indexAxis: 'y',
             plugins: {
+                title: {
+                    text: '100 total votes',
+                    display: true,
+                    position: "bottom"
+                },
                 tooltip: {
                     enabled: false
                 },
@@ -93,6 +98,11 @@ function startInstructionsPage() {
         options: {
             indexAxis: 'y',
             plugins: {
+                title: {
+                    text: '100 total votes',
+                    display: true,
+                    position: "bottom"
+                },
                 tooltip: {
                     enabled: false
                 },
@@ -154,7 +164,7 @@ function endQuiz(option, inPreview) {
         }, function () {
             $.ajax({
                 type: "POST",
-                url: "/Instructions/InstructionsData",
+                url: "/star-rank-exp/Instructions/InstructionsData",
                 data: {
                     instructionsStartTime: instructionsStartTime,
                     pageEndTime: pageEndTime,
@@ -174,17 +184,17 @@ function endQuiz(option, inPreview) {
         }, function (isConfirm) {
             $.ajax({
                 type: "POST",
-                url: "/Instructions/InstructionsData",
+                url: "/star-rank-exp/Instructions/InstructionsData",
                 data: {
                     instructionsStartTime: instructionsStartTime,
                     pageEndTime: pageEndTime,
                     selectedOption: option
                 },
                 success: function () {
-                    window.location.replace("/Evaluation/Evaluation"); //to prevent page back
+                    window.location.replace("/star-rank-exp/Evaluation/Evaluation"); //to prevent page back
                 },
                 error: function (jqXHR, exception) {
-                    window.location.replace("/Home/Error?lastScreen=welcome");
+                    window.location.replace("/star-rank-exp/Home/Error?lastScreen=welcome");
                 }
             });
         });

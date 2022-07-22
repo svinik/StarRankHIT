@@ -1,4 +1,4 @@
-﻿var age = "", gender = "", country = "", cap = "", seconds = "";
+var age = "", gender = "", country = "", cap = "", seconds = "";
 var ageAll = "", genderAll = "", countryAll = "", capAll = "", secondsAll = ""; // all tries, separated by #
 
 var mistakes = 0;

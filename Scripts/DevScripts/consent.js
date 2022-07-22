@@ -1,4 +1,4 @@
-﻿var pageStartTime;
+var pageStartTime;
 var pageStartTimeParticipant;
 
 var pageEndTime;
